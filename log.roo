@@ -48,3 +48,5 @@ logging setup --level DEBUG
 focus --class ~.model.User
 field date --fieldName dateOfBirth --type java.util.Date
 jpa setup --database MYSQL --provider ECLIPSELINK --databaseName flamingo --hostName 127.0.0.1 --userName root --password m4rlb0r0
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-09 23:25:13
+jpa setup --database HYPERSONIC_IN_MEMORY --provider ECLIPSELINK --databaseName FL_AddressBook 

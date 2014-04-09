@@ -20,4 +20,6 @@ public interface UserRep {
 	@Query("select distinct u from User as u order by u.dateOfBirth ASC")
 	List<User> findAllOrderByDateOfBirth();
 	
+	User findByName(String name);
+	
 }
