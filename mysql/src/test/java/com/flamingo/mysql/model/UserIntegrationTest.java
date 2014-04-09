@@ -1,5 +1,4 @@
 package com.flamingo.mysql.model;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -37,7 +36,7 @@ public class UserIntegrationTest {
 			User user = new User();
 			user.setName(userData[0]);
 			user.setDateOfBirth(new Date(userData[2]));
-			if (userData[2].equalsIgnoreCase("male")) {				
+			if (userData[1].trim().equals("Male")) {				
 				user.setGender(Gender.MALE);
 				maleUsersCount ++;
 			} else {
@@ -72,4 +71,5 @@ public class UserIntegrationTest {
 			}
 		}
 	}
+
 }

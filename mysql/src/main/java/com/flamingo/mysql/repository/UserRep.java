@@ -1,5 +1,4 @@
 package com.flamingo.mysql.repository;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +19,5 @@ public interface UserRep {
 	
 	@Query("select distinct u from User as u order by u.dateOfBirth ASC")
 	List<User> findAllOrderByDateOfBirth();
+	
 }

@@ -47,3 +47,4 @@ service type --interface ~.service.UserService --entity ~.model.User
 logging setup --level DEBUG 
 focus --class ~.model.User
 field date --fieldName dateOfBirth --type java.util.Date
+jpa setup --database MYSQL --provider ECLIPSELINK --databaseName flamingo --hostName 127.0.0.1 --userName root --password m4rlb0r0
