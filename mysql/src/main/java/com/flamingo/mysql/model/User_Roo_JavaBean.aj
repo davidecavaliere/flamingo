@@ -5,6 +5,7 @@ package com.flamingo.mysql.model;
 
 import com.flamingo.mysql.model.Gender;
 import com.flamingo.mysql.model.User;
+import java.util.Date;
 
 privileged aspect User_Roo_JavaBean {
     
@@ -22,6 +23,14 @@ privileged aspect User_Roo_JavaBean {
     
     public void User.setGender(Gender gender) {
         this.gender = gender;
+    }
+    
+    public Date User.getDateOfBirth() {
+        return this.dateOfBirth;
+    }
+    
+    public void User.setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
     
 }

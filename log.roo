@@ -45,3 +45,5 @@ web mvc json all
 module focus --moduleName mysql 
 service type --interface ~.service.UserService --entity ~.model.User
 logging setup --level DEBUG 
+focus --class ~.model.User
+field date --fieldName dateOfBirth --type java.util.Date

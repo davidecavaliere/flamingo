@@ -7,8 +7,12 @@ import com.flamingo.mysql.model.Gender;
 import com.flamingo.mysql.model.User;
 import com.flamingo.mysql.model.UserDataOnDemand;
 import com.flamingo.mysql.repository.UserRep;
+import com.flamingo.mysql.service.UserService;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -26,13 +30,22 @@ privileged aspect UserDataOnDemand_Roo_DataOnDemand {
     private List<User> UserDataOnDemand.data;
     
     @Autowired
+    UserService UserDataOnDemand.userService;
+    
+    @Autowired
     UserRep UserDataOnDemand.userRep;
     
     public User UserDataOnDemand.getNewTransientUser(int index) {
         User obj = new User();
+        setDateOfBirth(obj, index);
         setGender(obj, index);
         setName(obj, index);
         return obj;
+    }
+    
+    public void UserDataOnDemand.setDateOfBirth(User obj, int index) {
+        Date dateOfBirth = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime();
+        obj.setDateOfBirth(dateOfBirth);
     }
     
     public void UserDataOnDemand.setGender(User obj, int index) {
@@ -55,14 +68,14 @@ privileged aspect UserDataOnDemand_Roo_DataOnDemand {
         }
         User obj = data.get(index);
         Long id = obj.getId();
-        return userRep.findOne(id);
+        return userService.findUser(id);
     }
     
     public User UserDataOnDemand.getRandomUser() {
         init();
         User obj = data.get(rnd.nextInt(data.size()));
         Long id = obj.getId();
-        return userRep.findOne(id);
+        return userService.findUser(id);
     }
     
     public boolean UserDataOnDemand.modifyUser(User obj) {
@@ -72,7 +85,7 @@ privileged aspect UserDataOnDemand_Roo_DataOnDemand {
     public void UserDataOnDemand.init() {
         int from = 0;
         int to = 10;
-        data = userRep.findAll(new org.springframework.data.domain.PageRequest(from / to, to)).getContent();
+        data = userService.findUserEntries(from, to);
         if (data == null) {
             throw new IllegalStateException("Find entries implementation for 'User' illegally returned null");
         }
@@ -84,7 +97,7 @@ privileged aspect UserDataOnDemand_Roo_DataOnDemand {
         for (int i = 0; i < 10; i++) {
             User obj = getNewTransientUser(i);
             try {
-                userRep.save(obj);
+                userService.saveUser(obj);
             } catch (final ConstraintViolationException e) {
                 final StringBuilder msg = new StringBuilder();
                 for (Iterator<ConstraintViolation<?>> iter = e.getConstraintViolations().iterator(); iter.hasNext();) {
