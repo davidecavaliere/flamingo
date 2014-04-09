@@ -15,8 +15,8 @@
         <spring.version>3.2.6.RELEASE</spring.version>
     </properties>
     <modules>
-        <module>mysql</module>
-    <module>web</module>
+        <module>mysql</module>    
+    <module>mvc</module>
     </modules>
     <repositories>
         <repository>

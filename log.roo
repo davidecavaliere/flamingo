@@ -15,3 +15,33 @@ field enum --fieldName gender --type ~.model.Gender
 service type --interface ~.service.UserService --entity ~.model.UserService
 module focus --moduleName ~ 
 module create --moduleName web --topLevelPackage com.flamingo.mysql.web --packaging POM --parent flamingo:com.flamingo:0.1.0-BUILDSNAPSHOT 
+module focus --moduleName ~
+module create --moduleName mvc --topLevelPackage com.flamingo.web.mvc --parent web:com.flamingo.web:0.1.0-BUILDSNAPSHOT 
+module focus --moduleName ~
+module focus --moduleName web 
+// [failed] module create --moduleName mvc --topLevelPackage com.flamingo.web.mvc --parent web:com.flamingo.web:0.1.0-BUILDSNAPSHOT 
+// [failed] module create --moduleName mvc --topLevelPackage com.flamingo.web.mvc --parent web:com.flamingo.web:0.1.0-BUILDSNAPSHOT --artifactId mvc 
+module focus --moduleName ~
+exit
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-04-09 15:13:13
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-04-09 15:13:38
+module create --moduleName mvc --topLevelPackage com.flamingo.mvc --parent flamingo:com.flamingo:0.1.0-BUILDSNAPSHOT 
+web mvc setup
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-09 15:28:02
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-09 15:29:47
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-09 15:30:45
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-09 15:30:45
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-04-09 15:48:33
+exit
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-04-09 15:50:56
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-04-09 15:51:22
+module create --moduleName mvc --topLevelPackage com.flamingo.mvc --parent flamingo:com.flamingo:0.1.0-BUILDSNAPSHOT 
+web mvc json setup
+web mvc json all 
+web mvc json all 
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-09 15:55:41
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2014-04-09 15:59:10
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2014-04-09 16:01:55
+module focus --moduleName mysql 
+service type --interface ~.service.UserService --entity ~.model.User
+logging setup --level DEBUG 
