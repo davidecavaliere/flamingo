@@ -1,0 +1,17 @@
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-04-09 14:51:50
+hint
+project --topLevelPackage com.flamingo --java 7 --packaging POM --projectName flamingo
+module create --moduleName mysql --topLevelPackage com.flamingo.mysql --parent flamingo:com.flamingo:0.1.0-BUILDSNAPSHOT 
+jpa setup --database HYPERSONIC_IN_MEMORY --provider ECLIPSELINK --databaseName FL_AddressBook 
+// [failed] entity jpa --class com.flamingo.mysql.model.User --activeRecord false --serializable --table users --testAutomatically 
+entity jpa --class com.flamingo.mysql.model.User --activeRecord false --serializable --table users --testAutomatically --permitReservedWords 
+repository jpa --interface ~.repository.UserRep --entity ~.model.User
+field string --fieldName name --column name --notNull 
+enum type --class ~.model.Gender 
+enum constant --name MALE
+enum constant --name FEMALE
+focus --class ~.model.User
+field enum --fieldName gender --type ~.model.Gender
+service type --interface ~.service.UserService --entity ~.model.UserService
+module focus --moduleName ~ 
+module create --moduleName web --topLevelPackage com.flamingo.mysql.web --packaging POM --parent flamingo:com.flamingo:0.1.0-BUILDSNAPSHOT 
